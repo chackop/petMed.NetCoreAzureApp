@@ -1,10 +1,13 @@
 using Wpm.Web.Dal;
+using Wpm.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddInMemoryWpmDb();
+builder.Services.AddWpmDb(builder.Configuration);
+builder.Services.AddSingleton<StorageService>();
 
 var app = builder.Build();
 
